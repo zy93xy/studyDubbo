@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--当前项目是分布式项目中唯一的标识名，-->
+    <dubbo:application name="provide" owner="zy"/>
+    <!--这里是注册中心，zookeper hessian -->
+    <dubbo:registry address="zookeper://192.168.11.129?backup=192.168.11.137,192.168.11.138,192.168.11.139"/>
+    <!--dubbo提供的服务端口-->
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <!--这里是对外部暴露出来的服务接口-->
+    <dubbo:service interface="com.dubbo.zy.order.api.OrderService" ref="IOrderService"/>
+    <!--实例bean到ioc容器中，使用依赖注入的方式调用-->
+    <bean id="IOrderService" class="com.dubbo.zy.order.provide.OrderServiceImp"/>
+
+</beans>

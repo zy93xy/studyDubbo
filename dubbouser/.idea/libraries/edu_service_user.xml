@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="edu-service-user">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../dubboorder/api/target/edu-service-user.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
